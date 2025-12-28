@@ -32,7 +32,7 @@ export default function Invite() {
       <div className="invite-wrapper">
         {/* Ảnh nền */}
         <img
-          src="https://res.cloudinary.com/dgvpgsujg/image/upload/v1766940309/invites/ynehhfljdugndmjb1a0x.jpg"
+          src="https://res.cloudinary.com/dgvpgsujg/image/upload/v1766943742/invites/dukw6ypkgw204ehonect.jpg"
           alt="Thiệp mời"
           className="invite-bg"
         />
