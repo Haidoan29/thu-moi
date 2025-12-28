@@ -48,7 +48,7 @@ export default function Invite() {
           </p>
 
           <div className="invite-block">
-            <p><b>Đồng thầy:</b> {data.master || "Lê Thúy"}</p>
+            <p><b>Đồng thầy:</b> Lê Thuý</p>
             <p><b>Đệ tử:</b> {data.name}</p>
             <p><b>Dâng văn:</b> {data.offer || "Tâm Đen - cùng dàn nhạc"}</p>
           </div>
