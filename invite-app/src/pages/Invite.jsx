@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import "./Invite.css";
 
 export default function Invite() {
   const { id } = useParams();
@@ -20,75 +21,47 @@ export default function Invite() {
 
   if (!data) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Đang tải thiệp mời...</p>
+      <div className="invite-loading">
+        Đang tải thiệp mời...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      {/* WRAPPER */}
-      <div className="relative w-full max-w-md sm:max-w-lg">
-        {/* ẢNH NỀN */}
+    <div className="invite-page">
+      <div className="invite-wrapper">
+        {/* Ảnh nền */}
         <img
-          src='https://res.cloudinary.com/dgvpgsujg/image/upload/v1766940309/invites/ynehhfljdugndmjb1a0x.jpg'
+          src="https://res.cloudinary.com/dgvpgsujg/image/upload/v1766940309/invites/ynehhfljdugndmjb1a0x.jpg"
           alt="Thiệp mời"
-          className="w-full h-auto rounded-lg"
+          className="invite-bg"
         />
-        
 
-        {/* NỘI DUNG ĐÈ LÊN ẢNH */}
-        <div className="
-          absolute inset-0
-          flex flex-col items-center
-          text-center
-          text-yellow-300
-          px-6
-          pt-[38%]
-          sm:pt-[40%]
-        ">
-          {/* TIÊU ĐỀ */}
-          <h2 className="text-lg sm:text-xl font-semibold tracking-widest drop-shadow-lg">
+        {/* Nội dung đè lên ảnh */}
+        <div className="invite-content">
+          <h2 className="invite-title">
             NGHI LỄ HẦU ĐỒNG
           </h2>
 
-          <p className="text-xs sm:text-sm mt-1 tracking-wide drop-shadow">
+          <p className="invite-subtitle">
             TÍN NGƯỠNG TAM TỨ PHỦ
           </p>
 
-          {/* KHỐI THÔNG TIN */}
-          <div className="mt-6 text-sm sm:text-base leading-relaxed drop-shadow">
-            <p>
-              <span className="font-semibold">Đồng thầy:</span>{" "}
-              {data.master || "Lê Thúy"}
-            </p>
-
-            <p>
-              <span className="font-semibold">Đệ tử:</span>{" "}
-              {data.name}
-            </p>
-
-            <p>
-              <span className="font-semibold">Dâng văn:</span>{" "}
-              {data.offer || "—"}
-            </p>
+          <div className="invite-block">
+            <p><b>Đồng thầy:</b> {data.master || "Lê Thúy"}</p>
+            <p><b>Đệ tử:</b> {data.name}</p>
+            <p><b>Dâng văn:</b> {data.offer || "Tâm Đen - cùng dàn nhạc"}</p>
           </div>
 
-          <div className="mt-6 text-sm sm:text-base leading-relaxed drop-shadow">
+          <div className="invite-block">
             <p>
-              <span className="font-semibold">Tại đền:</span>{" "}
-              {data.temple || "—"}
+              <b>Tại đền:</b> Đền Đức Thánh Cả Ninh Bình (ngay núi Cánh Diều)
             </p>
-
             <p>
-              <span className="font-semibold">Thời gian:</span>{" "}
-              {data.time || "—"}
+              <b>Thời gian:</b> 13h00 – 15/11/2025 (tức 03/01/2026)
             </p>
-
             <p>
-              <span className="font-semibold">Địa chỉ:</span>{" "}
-              {data.address || "—"}
+              <b>Địa chỉ:</b> Phường Hoa Lư, Tỉnh Ninh Bình
             </p>
           </div>
         </div>

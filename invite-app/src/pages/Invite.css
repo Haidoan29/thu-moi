@@ -1,0 +1,98 @@
+/* RESET CƠ BẢN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Toàn trang */
+.invite-page {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Loading */
+.invite-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 16px;
+}
+
+/* Wrapper */
+.invite-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Desktop */
+@media (min-width: 640px) {
+  .invite-wrapper {
+    max-width: 520px;
+  }
+}
+
+/* Ảnh nền */
+.invite-bg {
+  width: 100%;
+  display: block;
+  border-radius: 0; /* ❌ không bo góc */
+}
+
+/* Nội dung đè lên ảnh */
+.invite-content {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  color: #facc15;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 38%;
+}
+
+/* Tiêu đề */
+.invite-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Phụ đề */
+.invite-subtitle {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Khối thông tin */
+.invite-block {
+  font-size: 14px;
+  line-height: 1.7;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Desktop chỉnh lại cỡ chữ */
+@media (min-width: 640px) {
+  .invite-content {
+    padding-top: 92%;
+  }
+
+  .invite-title {
+    font-size: 22px;
+  }
+
+  .invite-subtitle {
+    font-size: 14px;
+  }
+
+  .invite-block {
+    font-size: 16px;
+  }
+}
