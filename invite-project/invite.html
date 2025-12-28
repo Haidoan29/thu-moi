@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Thiệp mời</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <img id="avatar">
+  <h1 id="guestName"></h1>
+  <p>Trân trọng kính mời</p>
+</div>
+
+<script type="module">
+import { db } from './firebase.js';
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const id = new URLSearchParams(window.location.search).get("id");
+const snap = await getDoc(doc(db, "invites", id));
+
+if (snap.exists()) {
+  document.getElementById("guestName").innerText = snap.data().name;
+  document.getElementById("avatar").src = snap.data().imageUrl;
+}
+</script>
+
+</body>
+</html>

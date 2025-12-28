@@ -1,0 +1,29 @@
+body {
+  background: #0b2c3d;
+  font-family: 'Times New Roman', serif;
+  color: #f5e6c8;
+  text-align: center;
+}
+
+.card {
+  max-width: 420px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(#123, #0b2c3d);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.card img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid gold;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 28px;
+  margin-top: 20px;
+  color: gold;
+}

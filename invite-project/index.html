@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Tạo thiệp mời</title>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+<h2>Tạo thiệp mời</h2>
+
+<input type="text" id="name" placeholder="Nhập tên người được mời">
+<br><br>
+<input type="file" id="image" accept="image/*">
+<br><br>
+
+<button id="btnCreate">Tạo link</button>
+
+<p id="result"></p>
+
+<script type="module">
+import { db, storage } from './firebase.js';
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+const btn = document.getElementById("btnCreate");
+
+btn.addEventListener("click", async () => {
+  const name = document.getElementById("name").value.trim();
+  const file = document.getElementById("image").files[0];
+
+  if (!name || !file) {
+    alert("Vui lòng nhập tên và chọn ảnh");
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerText = "Đang tạo...";
+
+  try {
+    const id = Date.now().toString();
+
+    const imageRef = ref(storage, `invites/${id}`);
+    await uploadBytes(imageRef, file);
+    const imageUrl = await getDownloadURL(imageRef);
+
+    await setDoc(doc(db, "invites", id), {
+      name,
+      imageUrl,
+      createdAt: Date.now()
+    });
+
+    const link = `${location.origin}/invite.html?id=${id}`;
+
+    document.getElementById("result").innerHTML = `
+      <b>Link mời:</b><br>
+      <input value="${link}" style="width:100%" readonly>
+    `;
+  } catch (err) {
+    alert("Có lỗi xảy ra, kiểm tra Console");
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = "Tạo link";
+  }
+});
+</script>
+
+</body>
+</html>
