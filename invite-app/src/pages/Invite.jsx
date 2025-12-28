@@ -22,7 +22,7 @@ export default function Invite() {
     <div style={{ textAlign: "center" }}>
       <h2>Trân trọng kính mời</h2>
       <h1>{data.name}</h1>
-      <img src={data.imageUrl} style={{ maxWidth: "100%" }} />
+      <img src='https://res.cloudinary.com/dgvpgsujg/image/upload/v1766940309/invites/ynehhfljdugndmjb1a0x.jpg' style={{ maxWidth: "100%" }} />\
     </div>
   );
 }
